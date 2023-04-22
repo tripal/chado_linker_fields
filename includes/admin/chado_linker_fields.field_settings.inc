@@ -8,7 +8,7 @@
 /**
  * Provides the field settings form.
  */
-function tripal_chado_field_settings_admin_form($form, $form_state) {
+function chado_linker_field_settings_admin_form($form, $form_state) {
 
   $form['general'] = [
     '#type' => 'fieldset',

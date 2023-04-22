@@ -15,6 +15,7 @@ For example, this table might contain these records:
                   2 |          2 |          3
 ```
 And the linked contact could appear on a gene (feature) page as in this example
+
 ![chado_linker__contact example image](/docs/chado_linker__contact_example.png?raw=true "Example display of chado_linker__contact field")
 
 
@@ -53,17 +54,22 @@ or navigate directly to `/admin/structure/bio_data`.
 On a content type click on `manage fields` and then click on `+ Check for new fields`
 If a suitable linker table exists, a corresponding linker field will be added to the content type.
 For example, on project content type you should see this result:
+
 ![project added fields example image](/docs/add_fields_to_project_example.png?raw=true "Example of adding fields to project content type")
 
-You can then select the "MANAGE DISPLAY" tab and configure where you would like the new fields displayed.
+You can then select the "MANAGE DISPLAY" tab, enable the fields if they are disabled, and
+configure where you would like the new fields displayed.
+
+![project manage display example image](/docs/configure_fields_on_project_example.png?raw=true "New fields on the Manage Display tab, ready to be configured")
 
 
 
-## Configuration of the Field Settings
+## Configuration of Field Settings
 On your site's admin menu, navigate to Tripal &rarr; Data Storage &rarr; Chado &rarr; Field Settings
 or navigate directly to `/admin/tripal/storage/chado/field_settings`.
+The configuration form provides two settings:
 
-Two parameters are available for configuration.
+![field settings form image](/docs/field_settings_form.png?raw=true "Appearance of the Field Settings administrative form")
 
 ## Maximum records to display
 This setting is used to configure when a field converts to a summary view.
@@ -73,6 +79,7 @@ that assembly, which will likely be tens of thousands of genes. Displaying this 
 pager is used, will likely overwhelm any Tripal site. In this case a summary view is returned.
 
 Example of a summary view on an analysis (Gene Prediction) page:
+
 ![analysis_feature summary example image](/docs/analysis_feature_summary_example.png?raw=true "Example of a summary view on an analysis (Gene Prediction) page")
 
 ## Maximum field height
