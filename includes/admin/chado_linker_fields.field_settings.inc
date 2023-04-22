@@ -46,7 +46,7 @@ function chado_linker_field_settings_admin_form($form, $form_state) {
 /**
  * Validate the field settings form.
  */
-function tripal_chado_field_settings_admin_form_validate($form, &$form_state) {
+function chado_linker_field_settings_admin_form_validate($form, &$form_state) {
 
   // Validation for the positive integer fields.
   $fields = ['chado_linker_field_max_delta', 'chado_linker_field_max_height'];
@@ -61,7 +61,7 @@ function tripal_chado_field_settings_admin_form_validate($form, &$form_state) {
 /**
  * Submit the field settings form.
  */
-function tripal_chado_field_settings_admin_form_submit($form, $form_state) {
+function chado_linker_field_settings_admin_form_submit($form, $form_state) {
 
   variable_set('chado_linker_field_max_delta', $form_state['values']['chado_linker_field_max_delta']);
   variable_set('chado_linker_field_max_height', $form_state['values']['chado_linker_field_max_height']);
