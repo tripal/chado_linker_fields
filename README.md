@@ -1,8 +1,8 @@
 # Chado Linker Fields Documentation
 Tripal fields to display content linked to a different content type through linker tables
 
-This module provides fields for Tripal 3.x to display linked content. A number of
-content types have chado linker tables that define relationships between two
+This module provides fields for Tripal 7.x-3.10 or later to display linked content.
+A number of content types have chado linker tables that define relationships between two
 different content types. For example, in the core Tripal module there is a field named
 `chado_linker__contact` that can be used, for example, to add contact information on a
 feature, such as a gene. The correspondence information is stored in the chado table
@@ -40,7 +40,7 @@ This module provides linker fields for the following content types
 These fields can be used on any content type, however there must be a corresponding chado linker table, with a name based
 on the two content types. For example, to link a stock to a project, the table can be named either `project_stock` or `stock_project`.
 If Tripal does not provided a needed linker table, you can create a custom chado table yourself to store the linking information. See 
-[the Tripal Documentation]: https://tripal.readthedocs.io/en/latest/user_guide/custom_tables.html
+[the Tripal Documentation](https://tripal.readthedocs.io/en/latest/user_guide/custom_tables.html)
 for more information on creating custom tables.
 
 
@@ -48,8 +48,13 @@ for more information on creating custom tables.
 ## How to add a field to a content type
 These fields can be added to any content with an appropriate linker table.
 
-On your site's admin menu, navigate to Structure &rarr; Tripal content types
-or navigate directly to `/admin/structure/bio_data`.
+On your site's admin menu, navigate to
+
+Structure &rarr; Tripal content types
+
+or navigate directly to
+
+`/admin/structure/bio_data`.
 
 On a content type click on `manage fields` and then click on `+ Check for new fields`
 If a suitable linker table exists, a corresponding linker field will be added to the content type.
@@ -65,8 +70,14 @@ configure where you would like the new fields displayed.
 
 
 ## Configuration of Field Settings
-On your site's admin menu, navigate to Tripal &rarr; Data Storage &rarr; Chado &rarr; Field Settings
-or navigate directly to `/admin/tripal/storage/chado/field_settings`.
+On your site's admin menu, navigate to
+
+Tripal &rarr; Data Storage &rarr; Chado &rarr; Field Settings
+
+or navigate directly to
+
+`/admin/tripal/storage/chado/field_settings`
+
 The configuration form provides two settings:
 
 ![field settings form image](/docs/field_settings_form.png?raw=true "Appearance of the Field Settings administrative form")
