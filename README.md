@@ -52,7 +52,10 @@ or navigate directly to `/admin/structure/bio_data`.
 
 On a content type click on `manage fields` and then click on `+ Check for new fields`
 If a suitable linker table exists, a corresponding linker field will be added to the content type.
-You can then select the "MANAGE DISPLAY" tab and configure where you would like the field(s) displayed.
+For example, on project content type you should see this result:
+![project added fields example image](/docs/add_fields_to_project_example.png?raw=true "Example of adding fields to project content type")
+
+You can then select the "MANAGE DISPLAY" tab and configure where you would like the new fields displayed.
 
 
 

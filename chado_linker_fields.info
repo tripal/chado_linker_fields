@@ -1,0 +1,6 @@
+name = Chado Linker Fields Module
+description = Tripal fields to display content linked to a different content type through linker tables
+core = 7.x
+package = chado_linker_fields
+version = 7.x-1.0
+dependencies[] = tripal_core:tripal:tripal_chado

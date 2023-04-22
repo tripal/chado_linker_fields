@@ -1,0 +1,139 @@
+<?php
+/**
+ * @file
+ *
+ * Installation of the chado_linker_fields module
+ */
+
+
+/**
+ * Implements hook_requirements().
+ */
+function chado_linker_fields_requirements($phase) {
+  $requirements = [];
+  if ($phase == 'install') {
+    if (!module_exists('tripal')) {
+      $requirements['chado_linker_fields-tripal'] = [
+        'title' => "chado_linker_fields",
+        'value' => "ERROR: You must have Tripal v3 installed to use this module.",
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+    // Make sure chado is installed.
+    if (!$GLOBALS["chado_is_installed"]) {
+      $requirements['chado_linker_fields-chado'] = [
+        'title' => "chado_linker_fields",
+        'value' => "ERROR: Chado is not installed. Version 1.3 must be installed before this module can be enabled",
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+    // Requires chado version 1.3
+    else {
+      $chado_version = chado_get_version();
+      if ($chado_version < '1.3') {
+        $requirements['chado_linker_fields-chado'] = [
+          'title' => "chado_linker_fields",
+          'value' => "ERROR: Chado version is $chado_version, this module requires version 1.3",
+          'severity' => REQUIREMENT_ERROR,
+        ];
+      }
+    }
+  }
+  return $requirements;
+}
+
+/**
+ * Implements hook_install().
+ *
+ * Performs actions when the module is first installed.
+ *
+ * @ingroup chado_linker_fields
+ */
+function chado_linker_fields_install() {
+
+  // Add cv terms used by this module's fields that are not in core Tripal.
+  chado_linker_fields_add_cv_terms();
+
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Performs actions when the module is uninstalled.
+ *
+ * @ingroup chado_linker_fields
+ */
+function chado_linker_fields_uninstall() {
+
+  // Uninstall should remove the fields from this module from
+  // any content types currently using them.
+
+}
+
+/**
+ * Add CV terms used by this module
+ */
+function chado_linker_fields_add_cv_terms() {
+
+  // For chado_linker__analysis field.
+  chado_insert_cvterm([
+    'id' => 'NCIT:C25391',
+    'name' => 'Analysis',
+    'cv_name' => 'ncit',
+    'definition' => 'Examination and interpretation; the process of identifying an issue to be understood and'
+                  . ' addressed, modelling the issue, investigating the model results, interpreting the results,'
+                  . ' and possibly making a recommendation. The concept also refers to the examination and study'
+                  . ' of a whole in terms of the parts composing it.',
+  ]);
+
+  // For chado_linker__assay field.
+  chado_insert_cvterm([
+    'id' => 'NCIT:C60819',
+    'name' => 'Assay',
+    'cv_name' => 'ncit',
+    'definition' => 'A qualitative or quantitative analysis performed to determine the amount of a particular'
+                  . ' constituent in a sample or the biological or pharmacological properties of a drug.',
+  ]);
+
+  // For chado_linker__biomaterial field.
+  chado_insert_cvterm([
+    'id' => 'NCIT:C43376',
+    'name' => 'Biologically-Derived Material',
+    'cv_name' => 'ncit',
+    'definition' => 'Natural substances derived from living organisms such as cells, tissues, proteins, and DNA.',
+  ]);
+
+  // For chado_linker__feature field.
+  chado_insert_cvterm([
+    'id' => 'NCIT:C73619',
+    'name' => 'Feature',
+    'cv_name' => 'ncit',
+    'definition' => 'A prominent or identifiable aspect, region, or site of interest',
+  ]);
+
+  // For chado_linker__stock field.
+  chado_insert_cvterm([
+    'id' => 'NCIT:C48288',
+    'name' => 'Stock',
+    'cv_name' => 'ncit',
+    'definition' => 'The merchandise that a shop has on hand.',
+  ]);
+
+  // For chado_linker__study field.
+  chado_insert_cvterm([
+    'id' => 'NCIT:C63536',
+    'name' => 'Study',
+    'cv_name' => 'ncit',
+    'definition' => 'A detailed examination, analysis, or critical inspection of a subject designed'
+                  . ' to discover facts about it.',
+  ]);
+
+  // For summary when too many records to display.
+  chado_insert_cvterm([
+    'id' => 'NCIT:C25463',
+    'name' => 'Count',
+    'cv_name' => 'ncit',
+    'definition' => 'Determining the number or amount of something.',
+  ]);
+
+}

@@ -1,0 +1,106 @@
+<?php
+/**
+ * @file
+ *   Tripal fields to display content linked to a different content type through linker tables
+ *
+ * @ingroup chado_linker_fields
+ */
+
+require_once('includes/admin/chado_linker_fields.field_settings.inc');
+require_once('includes/chado_linker_fields.fields.inc');
+
+/**
+ * Implementation of hook_access().
+ *
+ * Purpose: To restrict access to the chado_linker_fields administrative pages
+ */
+function chado_linker_fields_access($access_args) {
+  if (user_access($access_args)) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Implements hook_menu().
+ *
+ * Purpose: Defines the menu structure for the chado_linker_fields
+ * administrative page, and provides callbacks for field widgets.
+ */
+function chado_linker_fields_menu() {
+  $items = [];
+
+  // Administrative Page Definitions
+  $weight = 0;
+
+  //////////////////////////////////////////////////////////////////////////////
+  //                           Field Settings
+  //////////////////////////////////////////////////////////////////////////////
+  $items['admin/tripal/storage/chado/chado_linker_settings'] = [
+    'title' => 'Field Settings',
+    'description' => t('Settings for Chado Linker fields.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['chado_linker_field_settings_admin_form'],
+    'type' => MENU_NORMAL_ITEM,
+    'access arguments' => ['administer chado fields'],
+    'file' => 'includes/chado_linker_fields.field_settings.inc',
+    'file path' => drupal_get_path('module', 'chado_linker_fields'),
+    'weight' => $weight,
+  ];
+
+  //////////////////////////////////////////////////////////////////////////////
+  //                           Auto Completes
+  //////////////////////////////////////////////////////////////////////////////
+  $items['admin/tripal/storage/chado/auto_name/analysis/%'] = [
+    'page callback' => 'chado_autocomplete_analysis',
+    'page arguments' => [6],
+    'access arguments' => ['access content'],
+    'file' => 'api/modules/tripal_chado.analysis.api.inc',
+    'file path' => drupal_get_path('module', 'tripal_chado'),
+    'type' => MENU_CALLBACK,
+  ];
+  $items['admin/tripal/storage/chado/auto_name/assay/%'] = [
+    'page callback' => 'chado_autocomplete_assay',
+    'page arguments' => [6],
+    'access arguments' => ['access content'],
+    'file' => 'api/modules/tripal_chado.assay.api.inc',
+    'file path' => drupal_get_path('module', 'tripal_chado'),
+    'type' => MENU_CALLBACK,
+  ];
+  $items['admin/tripal/storage/chado/auto_name/biomaterial/%'] = [
+    'page callback' => 'chado_autocomplete_biomaterial',
+    'page arguments' => [6],
+    'access arguments' => ['access content'],
+    'file' => 'api/modules/tripal_chado.biomaterial.api.inc',
+    'file path' => drupal_get_path('module', 'tripal_chado'),
+    'type' => MENU_CALLBACK,
+  ];
+  $items['admin/tripal/storage/chado/auto_name/featuremap/%'] = [
+    'page callback' => 'chado_autocomplete_featuremap',
+    'page arguments' => [6],
+    'access arguments' => ['featuremap content'],
+    'file' => 'api/modules/tripal_chado.featuremap.api.inc',
+    'file path' => drupal_get_path('module', 'tripal_chado'),
+    'type' => MENU_CALLBACK,
+  ];
+  $items['admin/tripal/storage/chado/auto_name/project/%'] = [
+    'page callback' => 'chado_autocomplete_project',
+    'page arguments' => [6],
+    'access arguments' => ['access content'],
+    'file' => 'api/modules/tripal_chado.project.api.inc',
+    'file path' => drupal_get_path('module', 'tripal_chado'),
+    'type' => MENU_CALLBACK,
+  ];
+  $items['admin/tripal/storage/chado/auto_name/study/%'] = [
+    'page callback' => 'chado_autocomplete_study',
+    'page arguments' => [6],
+    'access arguments' => ['access content'],
+    'file' => 'api/modules/tripal_chado.study.api.inc',
+    'file path' => drupal_get_path('module', 'tripal_chado'),
+    'type' => MENU_CALLBACK,
+  ];
+
+  return $items;
+}
