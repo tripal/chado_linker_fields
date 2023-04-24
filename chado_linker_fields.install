@@ -11,14 +11,29 @@
  */
 function chado_linker_fields_requirements($phase) {
   $requirements = [];
+  $minimum_version = '7.x-3.10';
   if ($phase == 'install') {
     if (!module_exists('tripal')) {
       $requirements['chado_linker_fields-tripal'] = [
         'title' => "chado_linker_fields",
-        'value' => "ERROR: You must have Tripal v3 installed to use this module.",
+        'value' => "ERROR: You must have Tripal $minimum_version or later installed to use this module.",
         'severity' => REQUIREMENT_ERROR,
       ];
     }
+    // Requires tripal version >=3.10
+    else {
+      $tripal_info = system_get_info('module', 'tripal');
+      $tripal_version = $tripal_info['version'];
+      $status = version_compare($tripal_version, $minimum_version);
+      if ( $status < 0 ) {
+        $requirements['chado_linker_fields-tripal'] = [
+          'title' => "chado_linker_fields",
+          'value' => "ERROR: Tripal version $tripal_version is below the required version $minimum_version to use this module.",
+          'severity' => REQUIREMENT_ERROR,
+        ];
+      }
+    }
+
     // Make sure chado is installed.
     if (!$GLOBALS["chado_is_installed"]) {
       $requirements['chado_linker_fields-chado'] = [
@@ -54,6 +69,9 @@ function chado_linker_fields_install() {
   // Add cv terms used by this module's fields that are not in core Tripal.
   chado_linker_fields_add_cv_terms();
 
+  // Initialize field configuration variables.
+  variable_set('chado_linker_field_max_delta', 200);
+  variable_set('chado_linker_field_max_height', 200);
 }
 
 /**
@@ -68,6 +86,9 @@ function chado_linker_fields_uninstall() {
   // Uninstall should remove the fields from this module from
   // any content types currently using them.
 
+  // Remove configuration variables specific to this module.
+  variable_del('chado_linker_field_max_delta');
+  variable_del('chado_linker_field_max_height');
 }
 
 /**
