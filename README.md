@@ -1,7 +1,13 @@
 # Chado Linker Fields Documentation
-Tripal fields to display content linked to a different content type through linker tables
+**Tripal fields to display content linked to a different content type through linker tables**
 
 This module provides fields for Tripal 7.x-3.10 or later to display linked content.
+**Please be aware that this module will not be compatible with Tripal versions 7.x-3.9 or earlier.**
+
+
+
+## Background
+
 A number of content types have chado linker tables that define relationships between two
 different content types. For example, in the core Tripal module there is a field named
 `chado_linker__contact` that can be used, for example, to add contact information on a
@@ -98,6 +104,10 @@ This setting is used to configure the maximum height of a single record displaye
 For example, if linking an analysis to an organism, the analysis record may have an extensive
 description, and if multiple analyses are linked, the resulting page that is displayed may be
 unwieldy. When the content exceeds the specified height, a scrollbar will be provided.
+
+Example of an analysis with scroll bar on a project page:
+
+![maximum height example image](/docs/max_height_example.png?raw=true "Example of an analysis with scroll bar on a project page")
 
 
 

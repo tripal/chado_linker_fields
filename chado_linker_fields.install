@@ -20,7 +20,7 @@ function chado_linker_fields_requirements($phase) {
         'severity' => REQUIREMENT_ERROR,
       ];
     }
-    // Requires tripal version >=3.10
+    // Requires tripal version >= '7.x-3.10'. '4.x' will also return -1 and trigger incorrect version
     else {
       $tripal_info = system_get_info('module', 'tripal');
       $tripal_version = $tripal_info['version'];
