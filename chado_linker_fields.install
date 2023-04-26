@@ -85,10 +85,13 @@ function chado_linker_fields_uninstall() {
 
   // Uninstall should remove the fields from this module from
   // any content types currently using them.
+  remove_chado_linker_fields();
 
   // Remove configuration variables specific to this module.
   variable_del('chado_linker_field_max_delta');
   variable_del('chado_linker_field_max_height');
+
+  // CV terms defined by this module are not removed on uninstall.
 }
 
 /**
@@ -132,6 +135,14 @@ function chado_linker_fields_add_cv_terms() {
     'definition' => 'A prominent or identifiable aspect, region, or site of interest',
   ]);
 
+  // For chado_linker__organism field.
+  chado_insert_cvterm([
+    'id' => 'NCIT:C14250',
+    'name' => 'Organism',
+    'cv_name' => 'ncit',
+    'definition' => 'A living entity.',
+  ]);
+
   // For chado_linker__stock field.
   chado_insert_cvterm([
     'id' => 'NCIT:C48288',
@@ -157,4 +168,41 @@ function chado_linker_fields_add_cv_terms() {
     'definition' => 'Determining the number or amount of something.',
   ]);
 
+}
+
+/**
+ * Remove fields defined by this module from all content types.
+ */
+function remove_chado_linker_fields() {
+
+  // Fields defined by this module
+  $field_ids = [
+    'NCIT:C25391' => 'analysis',
+    'NCIT:C60819' => 'assay',
+    'NCIT:C43376' => 'biomaterial',
+    'NCIT:C73619' => 'feature',
+    'data:C73619' => 'featuremap',
+    'NCIT:C14250' => 'organism',
+    'NCIT:C47885' => 'project',
+    'NCIT:C48288' => 'stock',
+    'NCIT:C63536' => 'study',
+  ];
+
+  // Find and delete any instances of these fields
+  $instances = field_info_instances('TripalEntity');
+  $n_deleted = 0;
+  foreach ($instances as $entity_type => $entity_info) {
+    foreach ($entity_info as $field_name => $field_info) {
+      $settings = $field_info['settings'];
+      $id = $settings['term_vocabulary'] . ':' . $settings['term_accession'];
+      if (isset($field_ids[$id])) {
+        // Delete the field $field_name from $entity_type
+        field_delete_field($field_name);
+        $n_deleted++;
+      }
+    }
+  }
+  if ($n_deleted) {
+    field_purge_batch($n_deleted);
+  }
 }
