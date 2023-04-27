@@ -163,7 +163,7 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   // ORGANISMS
   $organism_table = 'organism_' . $table_name;
   if (!chado_table_exists($organism_table)) {
-    $project_table = $table_name . '_organism';
+    $organism_table = $table_name . '_organism';
   }
   if (chado_table_exists($organism_table)) {
     $schema = chado_get_schema($organism_table);
