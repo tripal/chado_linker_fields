@@ -114,6 +114,11 @@ Example of an analysis with scroll bar on a project page:
 ## Existing Linker Tables
 Core Tripal provides the following linker tables compatible with the fields in this module.
 Other modules may define additional linker tables.
+Please note that a linker table must have a primary key to be usable by these fields.
+For example, the `analysis_organism` materialized view in core Tripal does not have a primary key,
+so it will not be recognized by these linker fields. However, the
+[tripal_eutils module](https://github.com/NAL-i5K/tripal_eutils)
+does define an `organism_analysis` custom table, which can be used.
 ```
 analysis_organism
 analysis_pub
