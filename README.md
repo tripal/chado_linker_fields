@@ -120,7 +120,6 @@ so it will not be recognized by these linker fields. However, the
 [tripal_eutils module](https://github.com/NAL-i5K/tripal_eutils)
 does define an `organism_analysis` custom table, which can be used.
 ```
-analysis_organism
 analysis_pub
 analysisfeature
 assay_biomaterial
