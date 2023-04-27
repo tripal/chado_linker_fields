@@ -57,17 +57,20 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($analysis_table)) {
     $schema = chado_get_schema($analysis_table);
-    $field_name = $table_name . '_analysis';
-    $field_type = 'chado_linker__analysis';
-    $info[$field_name] = [
-      'field_name' => $field_name,
-      'type' => $field_type,
-      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-      'locked' => FALSE,
-      'storage' => [
-        'type' => 'field_chado_storage',
-      ],
-    ];
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $field_name = $table_name . '_analysis';
+      $field_type = 'chado_linker__analysis';
+      $info[$field_name] = [
+        'field_name' => $field_name,
+        'type' => $field_type,
+        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+        'locked' => FALSE,
+        'storage' => [
+          'type' => 'field_chado_storage',
+        ],
+      ];
+    }
   }
 
   // ASSAYS
@@ -77,17 +80,20 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($assay_table)) {
     $schema = chado_get_schema($assay_table);
-    $field_name = $table_name . '_assay';
-    $field_type = 'chado_linker__assay';
-    $info[$field_name] = [
-      'field_name' => $field_name,
-      'type' => $field_type,
-      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-      'locked' => FALSE,
-      'storage' => [
-        'type' => 'field_chado_storage',
-      ],
-    ];
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $field_name = $table_name . '_assay';
+      $field_type = 'chado_linker__assay';
+      $info[$field_name] = [
+        'field_name' => $field_name,
+        'type' => $field_type,
+        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+        'locked' => FALSE,
+        'storage' => [
+          'type' => 'field_chado_storage',
+        ],
+      ];
+    }
   }
 
   // BIOMATERIALS
@@ -98,17 +104,20 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($biomaterial_table)) {
     $schema = chado_get_schema($biomaterial_table);
-    $field_name = $table_name . '_biomaterial';
-    $field_type = 'chado_linker__biomaterial';
-    $info[$field_name] = [
-      'field_name' => $field_name,
-      'type' => $field_type,
-      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-      'locked' => FALSE,
-      'storage' => [
-        'type' => 'field_chado_storage',
-      ],
-    ];
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $field_name = $table_name . '_biomaterial';
+      $field_type = 'chado_linker__biomaterial';
+      $info[$field_name] = [
+        'field_name' => $field_name,
+        'type' => $field_type,
+        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+        'locked' => FALSE,
+        'storage' => [
+          'type' => 'field_chado_storage',
+        ],
+      ];
+    }
   }
 
   // FEATURES
@@ -122,17 +131,20 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($feature_table)) {
     $schema = chado_get_schema($feature_table);
-    $field_name = $table_name . '_feature';
-    $field_type = 'chado_linker__feature';
-    $info[$field_name] = [
-      'field_name' => $field_name,
-      'type' => $field_type,
-      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-      'locked' => FALSE,
-      'storage' => [
-        'type' => 'field_chado_storage',
-      ],
-    ];
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $field_name = $table_name . '_feature';
+      $field_type = 'chado_linker__feature';
+      $info[$field_name] = [
+        'field_name' => $field_name,
+        'type' => $field_type,
+        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+        'locked' => FALSE,
+        'storage' => [
+          'type' => 'field_chado_storage',
+        ],
+      ];
+    }
   }
 
   // FEATUREMAPS
@@ -142,17 +154,20 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($featuremap_table)) {
     $schema = chado_get_schema($featuremap_table);
-    $field_name = $table_name . '_featuremap';
-    $field_type = 'chado_linker__featuremap';
-    $info[$field_name] = [
-      'field_name' => $field_name,
-      'type' => $field_type,
-      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-      'locked' => FALSE,
-      'storage' => [
-        'type' => 'field_chado_storage',
-      ],
-    ];
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $field_name = $table_name . '_featuremap';
+      $field_type = 'chado_linker__featuremap';
+      $info[$field_name] = [
+        'field_name' => $field_name,
+        'type' => $field_type,
+        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+        'locked' => FALSE,
+        'storage' => [
+          'type' => 'field_chado_storage',
+        ],
+      ];
+    }
   }
 
   // ORGANISMS
@@ -162,17 +177,20 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($organism_table)) {
     $schema = chado_get_schema($organism_table);
-    $field_name = $table_name . '_organism';
-    $field_type = 'chado_linker__organism';
-    $info[$field_name] = [
-      'field_name' => $field_name,
-      'type' => $field_type,
-      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-      'locked' => FALSE,
-      'storage' => [
-        'type' => 'field_chado_storage',
-      ],
-    ];
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $field_name = $table_name . '_organism';
+      $field_type = 'chado_linker__organism';
+      $info[$field_name] = [
+        'field_name' => $field_name,
+        'type' => $field_type,
+        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+        'locked' => FALSE,
+        'storage' => [
+          'type' => 'field_chado_storage',
+        ],
+      ];
+    }
   }
 
   // PROJECTS
@@ -183,17 +201,20 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($project_table)) {
     $schema = chado_get_schema($project_table);
-    $field_name = $table_name . '_project';
-    $field_type = 'chado_linker__project';
-    $info[$field_name] = [
-      'field_name' => $field_name,
-      'type' => $field_type,
-      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-      'locked' => FALSE,
-      'storage' => [
-        'type' => 'field_chado_storage',
-      ],
-    ];
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $field_name = $table_name . '_project';
+      $field_type = 'chado_linker__project';
+      $info[$field_name] = [
+        'field_name' => $field_name,
+        'type' => $field_type,
+        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+        'locked' => FALSE,
+        'storage' => [
+          'type' => 'field_chado_storage',
+        ],
+      ];
+    }
   }
 
   // STOCKS
@@ -208,17 +229,20 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($stock_table)) {
     $schema = chado_get_schema($stock_table);
-    $field_name = $table_name . '_stock';
-    $field_type = 'chado_linker__stock';
-    $info[$field_name] = [
-      'field_name' => $field_name,
-      'type' => $field_type,
-      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-      'locked' => FALSE,
-      'storage' => [
-        'type' => 'field_chado_storage',
-      ],
-    ];
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $field_name = $table_name . '_stock';
+      $field_type = 'chado_linker__stock';
+      $info[$field_name] = [
+        'field_name' => $field_name,
+        'type' => $field_type,
+        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+        'locked' => FALSE,
+        'storage' => [
+          'type' => 'field_chado_storage',
+        ],
+      ];
+    }
   }
 
   // STUDIES
@@ -229,17 +253,20 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($study_table)) {
     $schema = chado_get_schema($study_table);
-    $field_name = $table_name . '_study';
-    $field_type = 'chado_linker__study';
-    $info[$field_name] = [
-      'field_name' => $field_name,
-      'type' => $field_type,
-      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
-      'locked' => FALSE,
-      'storage' => [
-        'type' => 'field_chado_storage',
-      ],
-    ];
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $field_name = $table_name . '_study';
+      $field_type = 'chado_linker__study';
+      $info[$field_name] = [
+        'field_name' => $field_name,
+        'type' => $field_type,
+        'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+        'locked' => FALSE,
+        'storage' => [
+          'type' => 'field_chado_storage',
+        ],
+      ];
+    }
   }
 
 }
@@ -300,36 +327,40 @@ function chado_linker_fields_bundle_instances_info_linker(&$info, $entity_type, 
   }
   if (chado_table_exists($analysis_table)) {
     $field_name = $table_name . '_analysis';
-    $info[$field_name] = $info[$field_name] = [
-      'field_name' => $field_name,
-      'entity_type' => $entity_type,
-      'bundle' => $bundle->name,
-      'label' => 'Analysis',
-      'description' => 'Associates an analysis with this record',
-      'required' => FALSE,
-      'settings' => [
-        'auto_attach' => FALSE,
-        'chado_table' => $analysis_table,
-        'base_table' => $table_name,
-        'chado_column' => 'analysis_id',
-        'term_accession' => 'C25391',
-        'term_vocabulary' => 'NCIT',
-        'term_name' => 'Analysis',
-      ],
-      'widget' => [
-        'type' => 'chado_linker__analysis_widget',
+    $schema = chado_get_schema($analysis_table);
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $info[$field_name] = $info[$field_name] = [
+        'field_name' => $field_name,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle->name,
+        'label' => 'Analysis',
+        'description' => 'Associates an analysis with this record',
+        'required' => FALSE,
         'settings' => [
-          'display_label' => 1,
+          'auto_attach' => FALSE,
+          'chado_table' => $analysis_table,
+          'base_table' => $table_name,
+          'chado_column' => 'analysis_id',
+          'term_accession' => 'C25391',
+          'term_vocabulary' => 'NCIT',
+          'term_name' => 'Analysis',
         ],
-      ],
-      'display' => [
-        'default' => [
-          'label' => 'inline',
-          'type' => 'chado_linker__analysis_formatter',
-          'settings' => [],
+        'widget' => [
+          'type' => 'chado_linker__analysis_widget',
+          'settings' => [
+            'display_label' => 1,
+          ],
         ],
-      ],
-    ];
+        'display' => [
+          'default' => [
+            'label' => 'inline',
+            'type' => 'chado_linker__analysis_formatter',
+            'settings' => [],
+          ],
+        ],
+      ];
+    }
   }
 
   // ASSAYS
@@ -339,36 +370,40 @@ function chado_linker_fields_bundle_instances_info_linker(&$info, $entity_type, 
   }
   if (chado_table_exists($assay_table)) {
     $field_name = $table_name . '_assay';
-    $info[$field_name] = $info[$field_name] = [
-      'field_name' => $field_name,
-      'entity_type' => $entity_type,
-      'bundle' => $bundle->name,
-      'label' => 'Assay',
-      'description' => 'Associates an assay with this record',
-      'required' => FALSE,
-      'settings' => [
-        'auto_attach' => FALSE,
-        'chado_table' => $assay_table,
-        'base_table' => $table_name,
-        'chado_column' => 'assay_id',
-        'term_accession' => 'C60819',
-        'term_vocabulary' => 'NCIT',
-        'term_name' => 'Assay',
-      ],
-      'widget' => [
-        'type' => 'chado_linker__assay_widget',
+    $schema = chado_get_schema($assay_table);
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $info[$field_name] = $info[$field_name] = [
+        'field_name' => $field_name,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle->name,
+        'label' => 'Assay',
+        'description' => 'Associates an assay with this record',
+        'required' => FALSE,
         'settings' => [
-          'display_label' => 1,
+          'auto_attach' => FALSE,
+          'chado_table' => $assay_table,
+          'base_table' => $table_name,
+          'chado_column' => 'assay_id',
+          'term_accession' => 'C60819',
+          'term_vocabulary' => 'NCIT',
+          'term_name' => 'Assay',
         ],
-      ],
-      'display' => [
-        'default' => [
-          'label' => 'inline',
-          'type' => 'chado_linker__assay_formatter',
-          'settings' => [],
+        'widget' => [
+          'type' => 'chado_linker__assay_widget',
+          'settings' => [
+            'display_label' => 1,
+          ],
         ],
-      ],
-    ];
+        'display' => [
+          'default' => [
+            'label' => 'inline',
+            'type' => 'chado_linker__assay_formatter',
+            'settings' => [],
+          ],
+        ],
+      ];
+    }
   }
 
   // BIOMATERIALS
@@ -379,36 +414,40 @@ function chado_linker_fields_bundle_instances_info_linker(&$info, $entity_type, 
   }
   if (chado_table_exists($biomaterial_table)) {
     $field_name = $table_name . '_biomaterial';
-    $info[$field_name] = $info[$field_name] = [
-      'field_name' => $field_name,
-      'entity_type' => $entity_type,
-      'bundle' => $bundle->name,
-      'label' => 'Biomaterial',
-      'description' => 'Associates a biomaterial with this record',
-      'required' => FALSE,
-      'settings' => [
-        'auto_attach' => FALSE,
-        'chado_table' => $biomaterial_table,
-        'base_table' => $table_name,
-        'chado_column' => 'biomaterial_id',
-        'term_accession' => 'C43376',
-        'term_vocabulary' => 'NCIT',
-        'term_name' => 'Biologically-Derived Material ',
-      ],
-      'widget' => [
-        'type' => 'chado_linker__biomaterial_widget',
+    $schema = chado_get_schema($biomaterial_table);
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $info[$field_name] = $info[$field_name] = [
+        'field_name' => $field_name,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle->name,
+        'label' => 'Biomaterial',
+        'description' => 'Associates a biomaterial with this record',
+        'required' => FALSE,
         'settings' => [
-          'display_label' => 1,
+          'auto_attach' => FALSE,
+          'chado_table' => $biomaterial_table,
+          'base_table' => $table_name,
+          'chado_column' => 'biomaterial_id',
+          'term_accession' => 'C43376',
+          'term_vocabulary' => 'NCIT',
+          'term_name' => 'Biologically-Derived Material ',
         ],
-      ],
-      'display' => [
-        'default' => [
-          'label' => 'inline',
-          'type' => 'chado_linker__biomaterial_formatter',
-          'settings' => [],
+        'widget' => [
+          'type' => 'chado_linker__biomaterial_widget',
+          'settings' => [
+            'display_label' => 1,
+          ],
         ],
-      ],
-    ];
+        'display' => [
+          'default' => [
+            'label' => 'inline',
+            'type' => 'chado_linker__biomaterial_formatter',
+            'settings' => [],
+          ],
+        ],
+      ];
+    }
   }
 
   // FEATURES
@@ -422,36 +461,40 @@ function chado_linker_fields_bundle_instances_info_linker(&$info, $entity_type, 
   }
   if (chado_table_exists($feature_table)) {
     $field_name = $table_name . '_feature';
-    $info[$field_name] = $info[$field_name] = [
-      'field_name' => $field_name,
-      'entity_type' => $entity_type,
-      'bundle' => $bundle->name,
-      'label' => 'Feature',
-      'description' => 'Associates a feature with this record',
-      'required' => FALSE,
-      'settings' => [
-        'auto_attach' => FALSE,
-        'chado_table' => $feature_table,
-        'base_table' => $table_name,
-        'chado_column' => 'feature_id',
-        'term_accession' => 'C73619',
-        'term_vocabulary' => 'NCIT',
-        'term_name' => 'Feature',
-      ],
-      'widget' => [
-        'type' => 'chado_linker__feature_widget',
+    $schema = chado_get_schema($feature_table);
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $info[$field_name] = $info[$field_name] = [
+        'field_name' => $field_name,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle->name,
+        'label' => 'Feature',
+        'description' => 'Associates a feature with this record',
+        'required' => FALSE,
         'settings' => [
-          'display_label' => 1,
+          'auto_attach' => FALSE,
+          'chado_table' => $feature_table,
+          'base_table' => $table_name,
+          'chado_column' => 'feature_id',
+          'term_accession' => 'C73619',
+          'term_vocabulary' => 'NCIT',
+          'term_name' => 'Feature',
         ],
-      ],
-      'display' => [
-        'default' => [
-          'label' => 'inline',
-          'type' => 'chado_linker__feature_formatter',
-          'settings' => [],
+        'widget' => [
+          'type' => 'chado_linker__feature_widget',
+          'settings' => [
+            'display_label' => 1,
+          ],
         ],
-      ],
-    ];
+        'display' => [
+          'default' => [
+            'label' => 'inline',
+            'type' => 'chado_linker__feature_formatter',
+            'settings' => [],
+          ],
+        ],
+      ];
+    }
   }
 
   // FEATUREMAPS
@@ -461,36 +504,40 @@ function chado_linker_fields_bundle_instances_info_linker(&$info, $entity_type, 
   }
   if (chado_table_exists($featuremap_table)) {
     $field_name = $table_name . '_featuremap';
-    $info[$field_name] = $info[$field_name] = [
-      'field_name' => $field_name,
-      'entity_type' => $entity_type,
-      'bundle' => $bundle->name,
-      'label' => 'Featuremap',
-      'description' => 'Associates a featuremap with this record',
-      'required' => FALSE,
-      'settings' => [
-        'auto_attach' => FALSE,
-        'chado_table' => $featuremap_table,
-        'base_table' => $table_name,
-        'chado_column' => 'featuremap_id',
-        'term_accession' => '1274',
-        'term_vocabulary' => 'data',
-        'term_name' => 'Map',
-      ],
-      'widget' => [
-        'type' => 'chado_linker__featuremap_widget',
+    $schema = chado_get_schema($featuremap_table);
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $info[$field_name] = $info[$field_name] = [
+        'field_name' => $field_name,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle->name,
+        'label' => 'Featuremap',
+        'description' => 'Associates a featuremap with this record',
+        'required' => FALSE,
         'settings' => [
-          'display_label' => 1,
+          'auto_attach' => FALSE,
+          'chado_table' => $featuremap_table,
+          'base_table' => $table_name,
+          'chado_column' => 'featuremap_id',
+          'term_accession' => '1274',
+          'term_vocabulary' => 'data',
+          'term_name' => 'Map',
         ],
-      ],
-      'display' => [
-        'default' => [
-          'label' => 'inline',
-          'type' => 'chado_linker__featuremap_formatter',
-          'settings' => [],
+        'widget' => [
+          'type' => 'chado_linker__featuremap_widget',
+          'settings' => [
+            'display_label' => 1,
+          ],
         ],
-      ],
-    ];
+        'display' => [
+          'default' => [
+            'label' => 'inline',
+            'type' => 'chado_linker__featuremap_formatter',
+            'settings' => [],
+          ],
+        ],
+      ];
+    }
   }
 
   // ORGANISMS
@@ -500,36 +547,40 @@ function chado_linker_fields_bundle_instances_info_linker(&$info, $entity_type, 
   }
   if (chado_table_exists($organism_table)) {
     $field_name = $table_name . '_organism';
-    $info[$field_name] = $info[$field_name] = [
-      'field_name' => $field_name,
-      'entity_type' => $entity_type,
-      'bundle' => $bundle->name,
-      'label' => 'Organism',
-      'description' => 'Associates an organism with this record',
-      'required' => FALSE,
-      'settings' => [
-        'auto_attach' => FALSE,
-        'chado_table' => $organism_table,
-        'base_table' => $table_name,
-        'chado_column' => 'organism_id',
-        'term_accession' => 'C14250',
-        'term_vocabulary' => 'NCIT',
-        'term_name' => 'organism',
-      ],
-      'widget' => [
-        'type' => 'chado_linker__organism_widget',
+    $schema = chado_get_schema($organism_table);
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $info[$field_name] = $info[$field_name] = [
+        'field_name' => $field_name,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle->name,
+        'label' => 'Organism',
+        'description' => 'Associates an organism with this record',
+        'required' => FALSE,
         'settings' => [
-          'display_label' => 1,
+          'auto_attach' => FALSE,
+          'chado_table' => $organism_table,
+          'base_table' => $table_name,
+          'chado_column' => 'organism_id',
+          'term_accession' => 'C14250',
+          'term_vocabulary' => 'NCIT',
+          'term_name' => 'organism',
         ],
-      ],
-      'display' => [
-        'default' => [
-          'label' => 'inline',
-          'type' => 'chado_linker__organism_formatter',
-          'settings' => [],
+        'widget' => [
+          'type' => 'chado_linker__organism_widget',
+          'settings' => [
+            'display_label' => 1,
+          ],
         ],
-      ],
-    ];
+        'display' => [
+          'default' => [
+            'label' => 'inline',
+            'type' => 'chado_linker__organism_formatter',
+            'settings' => [],
+          ],
+        ],
+      ];
+    }
   }
 
   // PROJECTS
@@ -540,36 +591,40 @@ function chado_linker_fields_bundle_instances_info_linker(&$info, $entity_type, 
   }
   if (chado_table_exists($project_table)) {
     $field_name = $table_name . '_project';
-    $info[$field_name] = $info[$field_name] = [
-      'field_name' => $field_name,
-      'entity_type' => $entity_type,
-      'bundle' => $bundle->name,
-      'label' => 'Project',
-      'description' => 'Associates a project with this record',
-      'required' => FALSE,
-      'settings' => [
-        'auto_attach' => FALSE,
-        'chado_table' => $project_table,
-        'base_table' => $table_name,
-        'chado_column' => 'project_id',
-        'term_accession' => 'C47885',
-        'term_vocabulary' => 'NCIT',
-        'term_name' => 'Project',
-      ],
-      'widget' => [
-        'type' => 'chado_linker__project_widget',
+    $schema = chado_get_schema($project_table);
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $info[$field_name] = $info[$field_name] = [
+        'field_name' => $field_name,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle->name,
+        'label' => 'Project',
+        'description' => 'Associates a project with this record',
+        'required' => FALSE,
         'settings' => [
-          'display_label' => 1,
+          'auto_attach' => FALSE,
+          'chado_table' => $project_table,
+          'base_table' => $table_name,
+          'chado_column' => 'project_id',
+          'term_accession' => 'C47885',
+          'term_vocabulary' => 'NCIT',
+          'term_name' => 'Project',
         ],
-      ],
-      'display' => [
-        'default' => [
-          'label' => 'inline',
-          'type' => 'chado_linker__project_formatter',
-          'settings' => [],
+        'widget' => [
+          'type' => 'chado_linker__project_widget',
+          'settings' => [
+            'display_label' => 1,
+          ],
         ],
-      ],
-    ];
+        'display' => [
+          'default' => [
+            'label' => 'inline',
+            'type' => 'chado_linker__project_formatter',
+            'settings' => [],
+          ],
+        ],
+      ];
+    }
   }
 
   // STOCKS
@@ -584,36 +639,40 @@ function chado_linker_fields_bundle_instances_info_linker(&$info, $entity_type, 
   }
   if (chado_table_exists($stock_table)) {
     $field_name = $table_name . '_stock';
-    $info[$field_name] = $info[$field_name] = [
-      'field_name' => $field_name,
-      'entity_type' => $entity_type,
-      'bundle' => $bundle->name,
-      'label' => 'Stock',
-      'description' => 'Associates a stock with this record',
-      'required' => FALSE,
-      'settings' => [
-        'auto_attach' => FALSE,
-        'chado_table' => $stock_table,
-        'base_table' => $table_name,
-        'chado_column' => 'stock_id',
-        'term_accession' => 'C48288',
-        'term_vocabulary' => 'NCIT',
-        'term_name' => 'Stock',
-      ],
-      'widget' => [
-        'type' => 'chado_linker__stock_widget',
+    $schema = chado_get_schema($stock_table);
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $info[$field_name] = $info[$field_name] = [
+        'field_name' => $field_name,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle->name,
+        'label' => 'Stock',
+        'description' => 'Associates a stock with this record',
+        'required' => FALSE,
         'settings' => [
-          'display_label' => 1,
+          'auto_attach' => FALSE,
+          'chado_table' => $stock_table,
+          'base_table' => $table_name,
+          'chado_column' => 'stock_id',
+          'term_accession' => 'C48288',
+          'term_vocabulary' => 'NCIT',
+          'term_name' => 'Stock',
         ],
-      ],
-      'display' => [
-        'default' => [
-          'label' => 'inline',
-          'type' => 'chado_linker__stock_formatter',
-          'settings' => [],
+        'widget' => [
+          'type' => 'chado_linker__stock_widget',
+          'settings' => [
+            'display_label' => 1,
+          ],
         ],
-      ],
-    ];
+        'display' => [
+          'default' => [
+            'label' => 'inline',
+            'type' => 'chado_linker__stock_formatter',
+            'settings' => [],
+          ],
+        ],
+      ];
+    }
   }
 
   // STUDIES
@@ -624,36 +683,40 @@ function chado_linker_fields_bundle_instances_info_linker(&$info, $entity_type, 
   }
   if (chado_table_exists($study_table)) {
     $field_name = $table_name . '_study';
-    $info[$field_name] = $info[$field_name] = [
-      'field_name' => $field_name,
-      'entity_type' => $entity_type,
-      'bundle' => $bundle->name,
-      'label' => 'Study',
-      'description' => 'Associates a study with this record',
-      'required' => FALSE,
-      'settings' => [
-        'auto_attach' => FALSE,
-        'chado_table' => $study_table,
-        'base_table' => $table_name,
-        'chado_column' => 'study_id',
-        'term_accession' => 'C63536',
-        'term_vocabulary' => 'NCIT',
-        'term_name' => 'Study',
-      ],
-      'widget' => [
-        'type' => 'chado_linker__study_widget',
+    $schema = chado_get_schema($study_table);
+    // Materialized views can't be supported without a primary key
+    if (array_key_exists('primary key', $schema)) {
+      $info[$field_name] = $info[$field_name] = [
+        'field_name' => $field_name,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle->name,
+        'label' => 'Study',
+        'description' => 'Associates a study with this record',
+        'required' => FALSE,
         'settings' => [
-          'display_label' => 1,
+          'auto_attach' => FALSE,
+          'chado_table' => $study_table,
+          'base_table' => $table_name,
+          'chado_column' => 'study_id',
+          'term_accession' => 'C63536',
+          'term_vocabulary' => 'NCIT',
+          'term_name' => 'Study',
         ],
-      ],
-      'display' => [
-        'default' => [
-          'label' => 'inline',
-          'type' => 'chado_linker__study_formatter',
-          'settings' => [],
+        'widget' => [
+          'type' => 'chado_linker__study_widget',
+          'settings' => [
+            'display_label' => 1,
+          ],
         ],
-      ],
-    ];
+        'display' => [
+          'default' => [
+            'label' => 'inline',
+            'type' => 'chado_linker__study_formatter',
+            'settings' => [],
+          ],
+        ],
+      ];
+    }
   }
 
 }
