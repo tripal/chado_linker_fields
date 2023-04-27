@@ -57,7 +57,6 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($analysis_table)) {
     $schema = chado_get_schema($analysis_table);
-    $pkey = $schema['primary key'][0];
     $field_name = $table_name . '_analysis';
     $field_type = 'chado_linker__analysis';
     $info[$field_name] = [
@@ -78,7 +77,6 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($assay_table)) {
     $schema = chado_get_schema($assay_table);
-    $pkey = $schema['primary key'][0];
     $field_name = $table_name . '_assay';
     $field_type = 'chado_linker__assay';
     $info[$field_name] = [
@@ -100,7 +98,6 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($biomaterial_table)) {
     $schema = chado_get_schema($biomaterial_table);
-    $pkey = $schema['primary key'][0];
     $field_name = $table_name . '_biomaterial';
     $field_type = 'chado_linker__biomaterial';
     $info[$field_name] = [
@@ -125,7 +122,6 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($feature_table)) {
     $schema = chado_get_schema($feature_table);
-    $pkey = $schema['primary key'][0];
     $field_name = $table_name . '_feature';
     $field_type = 'chado_linker__feature';
     $info[$field_name] = [
@@ -146,7 +142,6 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($featuremap_table)) {
     $schema = chado_get_schema($featuremap_table);
-    $pkey = $schema['primary key'][0];
     $field_name = $table_name . '_featuremap';
     $field_type = 'chado_linker__featuremap';
     $info[$field_name] = [
@@ -167,7 +162,6 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($organism_table)) {
     $schema = chado_get_schema($organism_table);
-    $pkey = $schema['primary key'][0];
     $field_name = $table_name . '_organism';
     $field_type = 'chado_linker__organism';
     $info[$field_name] = [
@@ -189,7 +183,6 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($project_table)) {
     $schema = chado_get_schema($project_table);
-    $pkey = $schema['primary key'][0];
     $field_name = $table_name . '_project';
     $field_type = 'chado_linker__project';
     $info[$field_name] = [
@@ -215,7 +208,6 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($stock_table)) {
     $schema = chado_get_schema($stock_table);
-    $pkey = $schema['primary key'][0];
     $field_name = $table_name . '_stock';
     $field_type = 'chado_linker__stock';
     $info[$field_name] = [
@@ -237,7 +229,6 @@ function chado_linker_fields_bundle_fields_info_linker(&$info, $details, $entity
   }
   if (chado_table_exists($study_table)) {
     $schema = chado_get_schema($study_table);
-    $pkey = $schema['primary key'][0];
     $field_name = $table_name . '_study';
     $field_type = 'chado_linker__study';
     $info[$field_name] = [
