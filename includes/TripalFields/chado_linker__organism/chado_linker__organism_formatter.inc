@@ -64,9 +64,9 @@ class chado_linker__organism_formatter extends ChadoFieldFormatter {
 
         // Get the field values
         $organism_name = $organism[$name_term];
-        $abbreviation = $organism[$abbreviation_term];
-        $common_name = $organism[$common_name_term];
-        $comment = $organism[$comment_term];
+        $abbreviation = $organism[$abbreviation_term] ?? '';
+        $common_name = $organism[$common_name_term] ?? '';
+        $comment = $organism[$comment_term] ?? '';
 
         // Add a link if there is an entity.
         if (array_key_exists('entity', $item['value']) and $item['value']['entity']) {
