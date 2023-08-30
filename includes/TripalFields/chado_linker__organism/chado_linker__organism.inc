@@ -215,7 +215,7 @@ class chado_linker__organism extends ChadoField {
             'value' => [
               $name_term => $scientific_name,
               $common_name_term => $organism->common_name,
-              $abbreviation_name_term => $organism->abbreviation,
+              $abbreviation_term => $organism->abbreviation,
               $comment_term => $organism->comment,
             ],
             // Add elements that are not part of the values but used by
