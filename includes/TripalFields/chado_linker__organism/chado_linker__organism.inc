@@ -209,22 +209,22 @@ class chado_linker__organism extends ChadoField {
           }
           // Organism is a bit of a special case to construct the displayed
           // name, use the api function for this.
-          $organism_id = $organism_linker->organism_id;
-          $scientific_name = chado_get_organism_scientific_name($organism_id);
+          $organism = $organism_linker->organism_id;
+          $scientific_name = chado_get_organism_scientific_name($organism);
           $entity->{$field_name}['und'][$i] = [
             'value' => [
               $name_term => $scientific_name,
-              $common_name_term => $organism_linker->common_name,
-              $abbreviation_name_term => $organism_linker->abbreviation,
-              $comment_term => $organism_linker->comment,
+              $common_name_term => $organism->common_name,
+              $abbreviation_term => $organism->abbreviation,
+              $comment_term => $organism->comment,
             ],
             // Add elements that are not part of the values but used by
             // the chado storage back-end for saving values.
             'chado-' . $field_table . '__' . $pkey => $organism_linker->$pkey,
             'chado-' . $field_table . '__' . $fkey_lcolumn => $record->$fkey_lcolumn,
-            'chado-' . $field_table . '__' . 'organism_id' => $organism_linker->organism_id,
+            'chado-' . $field_table . '__' . 'organism_id' => $organism->organism_id,
             // For the widget to work properly we will preform values.
-            'organism_name' => $scientific_name . ' [id: ' . $organism_linker->organism_id . ']',
+            'organism_name' => $scientific_name . ' [id: ' . $organism->organism_id . ']',
           ];
 
           if (property_exists($organism, 'entity_id')) {
